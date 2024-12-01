@@ -1,6 +1,7 @@
 column_one_list = []
 column_two_list = []
 sum = 0
+similarity_score_sum = 0
 
 with open('input.txt') as infile:
     for line in infile:
@@ -15,5 +16,10 @@ with open('input.txt') as infile:
     #find differences
     for i, k in zip(sorted_column_one, sorted_column_two):
             difference = abs(i - k)
-            sum += difference 
-    print(sum)
+            sum += difference
+    # PART 2
+    for x in sorted_column_one:
+        num_of_instances = sorted_column_two.count(x)
+        similarity_score = x * num_of_instances
+        similarity_score_sum += similarity_score
+    print(similarity_score_sum)
